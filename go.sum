@@ -1,0 +1,4 @@
+github.com/EugeneGpil/httpTester v0.0.8 h1:2TvrKezL7MbfOXyfL1XYt4FH7k22EOA4WCw0DKo+eXc=
+github.com/EugeneGpil/httpTester v0.0.8/go.mod h1:Ch6zHHqEox7b08J1oP2pJcpuuWj4IEUtaejT7rTE5I8=
+github.com/EugeneGpil/tester v0.0.3 h1:xkU8l7a9AH2+MpelhBUIyCYxrDoILv9O0XIPdNPNwQE=
+github.com/EugeneGpil/tester v0.0.3/go.mod h1:NMXHQcI+RHH36zBbS4AswGnHXvan8Lms89uW+gfYfzo=
