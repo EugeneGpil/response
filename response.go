@@ -1,8 +1,9 @@
 package response
 
 import (
-	"encoding/json"
 	"net/http"
+
+	"github.com/EugeneGpil/response/app/modules/WriteValidationErrors"
 )
 
 type Response struct {
@@ -15,22 +16,6 @@ func New(writer http.ResponseWriter) Response {
 	}
 }
 
-func (response Response) WriteValidationErrors(errors map[string]string) error {
-	message := struct {
-		Message string
-		Errors  map[string]string
-	}{
-		Message: "Your request encountered some errors",
-		Errors:  errors,
-	}
-
-	responseBody, err := json.Marshal(message)
-	if err != nil {
-		return err
-	}
-
-	response.writer.Write(responseBody)
-	response.writer.WriteHeader(http.StatusUnprocessableEntity)
-
-	return nil
+func (response Response) WriteValidationErrors(dto ValidationErrorsDto) error {
+	return WriteValidationErrors.WriteValidationErrors(response.writer, dto)
 }
