@@ -15,8 +15,8 @@ var mainErrorMessage = "Main error message"
 var property = "property"
 var responseError = "some error"
 var errorCode = 15
-var expectedMessage = fmt.Sprintf(
-	"{\"Message\":\"%v\",\"Errors\":{\"%v\":\"%v\"},\"Code\":%v}",
+var expectedResponseBody = fmt.Sprintf(
+	`{"Message":"%v","Errors":{"%v":"%v"},"Code":%v}`,
 	mainErrorMessage,
 	property,
 	responseError,
@@ -48,7 +48,7 @@ func Test_should_write_errors_with_message_and_code(t *testing.T) {
 
 	tester.AssertSame(1, len(messages))
 
-	message := messages[0]
+	responseBody := messages[0]
 
-	tester.AssertSame([]byte(expectedMessage), message)
+	tester.AssertSame([]byte(expectedResponseBody), responseBody)
 }
