@@ -5,6 +5,7 @@ import (
 	"net/http"
 	"testing"
 
+	"github.com/EugeneGpil/response/app/ship/utils/tests"
 	"github.com/EugeneGpil/tester"
 
 	httpTester "github.com/EugeneGpil/httpTester"
@@ -23,15 +24,5 @@ func Test_should_write_success(t *testing.T) {
 
 	err := response.WriteSuccess(testMessage)
 
-	tester.AssertNil(err)
-
-	tester.AssertSame(http.StatusOK, writer.GetStatus())
-
-	messages := writer.GetMessages()
-
-	tester.AssertSame(1, len(messages))
-
-	responseBody := messages[0]
-
-	tester.AssertSame([]byte(expectedResponseBody), responseBody)
+	tests.AssertResponse(err, writer, http.StatusOK, expectedResponseBody)
 }
