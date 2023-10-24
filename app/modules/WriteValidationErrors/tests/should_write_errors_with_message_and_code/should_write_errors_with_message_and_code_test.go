@@ -5,9 +5,9 @@ import (
 	"net/http"
 	"testing"
 
+	"github.com/EugeneGpil/responseWriter"
 	"github.com/EugeneGpil/tester"
 
-	httpTester "github.com/EugeneGpil/httpTester"
 	responsePackage "github.com/EugeneGpil/response"
 )
 
@@ -30,7 +30,7 @@ func Test_should_write_errors_with_message_and_code(t *testing.T) {
 		property: responseError,
 	}
 
-	writer := httpTester.GetTestResponseWriter()
+	writer := responseWriter.New()
 
 	response := responsePackage.New(writer)
 
@@ -40,6 +40,25 @@ func Test_should_write_errors_with_message_and_code(t *testing.T) {
 		Code:    errorCode,
 	})
 
+	tester.AssertNil(err)
+
+	tester.AssertSame(http.StatusUnprocessableEntity, writer.GetStatus())
+
+	messages := writer.GetMessages()
+
+	tester.AssertSame(1, len(messages))
+
+	responseBody := messages[0]
+
+	tester.AssertSame([]byte(expectedResponseBody), responseBody)
+}
+
+func assertResponse(
+	err error,
+	writer responseWriter.ResponseWriter,
+	expectedStatusCode int,
+	expectedResponseBody string,
+) {
 	tester.AssertNil(err)
 
 	tester.AssertSame(http.StatusUnprocessableEntity, writer.GetStatus())

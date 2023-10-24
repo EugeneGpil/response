@@ -6,16 +6,17 @@ import (
 	"testing"
 
 	"github.com/EugeneGpil/response/app/modules/WriteValidationErrors/vars"
+	"github.com/EugeneGpil/responseWriter"
 	"github.com/EugeneGpil/tester"
 
-	httpTester "github.com/EugeneGpil/httpTester"
+	
 	responsePackage "github.com/EugeneGpil/response"
 )
 
 var property = "property"
 var responseError = "some error"
-var expectedMessage = fmt.Sprintf(
-	"{\"Message\":\"%v\",\"Errors\":{\"%v\":\"%v\"},\"Code\":0}",
+var expectedResponseBody = fmt.Sprintf(
+	`{"Message":"%v","Errors":{"%v":"%v"},"Code":0}`,
 	vars.DefaultMessage,
 	property,
 	responseError,
@@ -28,7 +29,7 @@ func Test_should_write_errors(t *testing.T) {
 		property: responseError,
 	}
 
-	writer := httpTester.GetTestResponseWriter()
+	writer := responseWriter.New()
 
 	response := responsePackage.New(writer)
 
@@ -44,7 +45,7 @@ func Test_should_write_errors(t *testing.T) {
 
 	tester.AssertSame(1, len(messages))
 
-	message := messages[0]
+	responseBody := messages[0]
 
-	tester.AssertSame([]byte(expectedMessage), message)
+	tester.AssertSame([]byte(expectedResponseBody), responseBody)
 }
