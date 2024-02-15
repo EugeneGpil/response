@@ -17,8 +17,8 @@ func WriteSuccess(writer http.ResponseWriter, message string) error {
 		return err
 	}
 
-	writer.Write(responseBody)
 	writer.WriteHeader(http.StatusOK)
+	writer.Write(responseBody)
 
 	return nil
 }

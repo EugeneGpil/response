@@ -26,8 +26,8 @@ func WriteValidationErrors(writer http.ResponseWriter, dto interfaces.Validation
 		return err
 	}
 
-	writer.Write(responseBody)
 	writer.WriteHeader(http.StatusUnprocessableEntity)
+	writer.Write(responseBody)
 
 	return nil
 }
