@@ -22,7 +22,7 @@ func (shipWriter *writer) SetWriter(writer http.ResponseWriter) *writer {
 	return shipWriter
 }
 
-func (shipWriter *writer) WriteResponse(status int, body interface{}) error {
+func (shipWriter *writer) Write(status int, body interface{}) error {
 	responseBody, err := json.Marshal(body)
 	if err != nil {
 		return err

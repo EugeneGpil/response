@@ -25,7 +25,7 @@ func WriteValidationErrors(writer http.ResponseWriter, dto interfaces.Validation
 	return shipWriter.
 		New().
 		SetWriter(writer).
-		WriteResponse(http.StatusUnprocessableEntity, body)
+		Write(http.StatusUnprocessableEntity, body)
 }
 
 func getMessage(message string) string {
