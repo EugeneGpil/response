@@ -13,5 +13,8 @@ func WriteSuccess(writer http.ResponseWriter, message string) error {
 		Message: message,
 	}
 
-	return shipWriter.WriteResponse(writer, http.StatusOK, body)
+	return shipWriter.
+		New().
+		SetWriter(writer).
+		WriteResponse(http.StatusOK, body)
 }

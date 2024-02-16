@@ -22,7 +22,10 @@ func WriteValidationErrors(writer http.ResponseWriter, dto interfaces.Validation
 		Code:    dto.GetCode(),
 	}
 
-	return shipWriter.WriteResponse(writer, http.StatusUnprocessableEntity, body)
+	return shipWriter.
+		New().
+		SetWriter(writer).
+		WriteResponse(http.StatusUnprocessableEntity, body)
 }
 
 func getMessage(message string) string {
