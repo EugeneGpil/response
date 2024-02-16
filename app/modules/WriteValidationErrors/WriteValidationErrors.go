@@ -1,17 +1,18 @@
 package WriteValidationErrors
 
 import (
-	"encoding/json"
 	"net/http"
 
 	"github.com/EugeneGpil/response/app/modules/WriteValidationErrors/interfaces"
 	"github.com/EugeneGpil/response/app/modules/WriteValidationErrors/vars"
+
+	shipWriter "github.com/EugeneGpil/response/app/ship/utils/writer"
 )
 
 func WriteValidationErrors(writer http.ResponseWriter, dto interfaces.ValidationErrorsDto) error {
 	message := getMessage(dto.GetMessage())
 
-	responseBodyStruct := struct {
+	body := struct {
 		Message string
 		Errors  map[string]string
 		Code    int
@@ -21,15 +22,7 @@ func WriteValidationErrors(writer http.ResponseWriter, dto interfaces.Validation
 		Code:    dto.GetCode(),
 	}
 
-	responseBody, err := json.Marshal(responseBodyStruct)
-	if err != nil {
-		return err
-	}
-
-	writer.WriteHeader(http.StatusUnprocessableEntity)
-	writer.Write(responseBody)
-
-	return nil
+	return shipWriter.WriteResponse(writer, http.StatusUnprocessableEntity, body)
 }
 
 func getMessage(message string) string {
