@@ -1,6 +1,6 @@
 github.com/EugeneGpil/httpTester v0.0.9 h1:djFIUnCewjN9NCb5XcsT/zesG9IBSdzt9X5C2Fd+OIg=
 github.com/EugeneGpil/httpTester v0.0.9/go.mod h1:d8Wdrme3/ZrSpnvPxnMEqb/bpuSJulfQ+CTwivW6kgw=
-github.com/EugeneGpil/responseWriter v0.0.1 h1:xgBZWdH/vLm3rRvSZ1mYR0PrrA3U7xO0aE1l9rZ9oxE=
-github.com/EugeneGpil/responseWriter v0.0.1/go.mod h1:G46dIm82OGMuCeaeNugtYJNL9daCnrldHE9cLiz/Qc8=
+github.com/EugeneGpil/responseWriter v0.0.2 h1:CuQFoARKfud5r/7K9AnpB847Tr3e0BGhMF1gscjsqLc=
+github.com/EugeneGpil/responseWriter v0.0.2/go.mod h1:G46dIm82OGMuCeaeNugtYJNL9daCnrldHE9cLiz/Qc8=
 github.com/EugeneGpil/tester v0.0.4 h1:UI0fGoJxo5QM8B1620Dv5nUTm6I6ICRK380Sq/r+9ag=
 github.com/EugeneGpil/tester v0.0.4/go.mod h1:NMXHQcI+RHH36zBbS4AswGnHXvan8Lms89uW+gfYfzo=

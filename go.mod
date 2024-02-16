@@ -7,4 +7,4 @@ require (
 	github.com/EugeneGpil/tester v0.0.4
 )
 
-require github.com/EugeneGpil/responseWriter v0.0.1
+require github.com/EugeneGpil/responseWriter v0.0.2
