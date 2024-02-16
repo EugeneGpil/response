@@ -15,6 +15,8 @@ func AssertResponse(
 
 	tester.AssertSame(expectedStatusCode, writer.GetStatus())
 
+	tester.AssertSame("application/json", writer.Header().Get("Content/type"))
+
 	messages := writer.GetMessages()
 
 	tester.AssertSame(1, len(messages))
