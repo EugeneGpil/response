@@ -28,3 +28,7 @@ func (response Response) WriteSuccess(message string) error {
 func (response Response) Write(message []byte) (int, error) {
 	return response.writer.Write(message)
 }
+
+func (response Response) SetStatusCode(statusCode int) {
+	response.writer.WriteHeader(statusCode)
+}
