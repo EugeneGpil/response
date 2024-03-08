@@ -38,4 +38,6 @@ func Test_should_write_errors(t *testing.T) {
 	})
 
 	tests.AssertResponse(err, writer, http.StatusUnprocessableEntity, expectedResponseBody)
+
+	tests.AssertResponseContentTypeApplicationJson(writer)
 }

@@ -24,3 +24,7 @@ func (response Response) WriteValidationErrors(dto ValidationErrorsDto) error {
 func (response Response) WriteSuccess(message string) error {
 	return WriteSuccess.WriteSuccess(response.writer, message)
 }
+
+func (response Response) Write(message []byte) (int, error) {
+	return response.writer.Write(message)
+}

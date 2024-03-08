@@ -1,8 +1,6 @@
-package should_write_success
+package should_write_message
 
 import (
-	"fmt"
-	"net/http"
 	"testing"
 
 	"github.com/EugeneGpil/response/app/ship/utils/tests"
@@ -13,18 +11,16 @@ import (
 )
 
 var testMessage = "test message"
-var expectedResponseBody = fmt.Sprintf(`{"Message":"%v"}`, testMessage)
+var expectedResponseBody = "test message"
 
-func Test_should_write_success(t *testing.T) {
+func Test_should_write_message(t *testing.T) {
 	tester.SetTester(t)
 
 	writer := httpTester.GetTestResponseWriter()
 
 	response := responsePackage.New(writer)
 
-	err := response.WriteSuccess(testMessage)
+	_, err := response.Write([]byte(testMessage))
 
-	tests.AssertResponse(err, writer, http.StatusOK, expectedResponseBody)
-
-	tests.AssertResponseContentTypeApplicationJson(writer)
+	tests.AssertResponse(err, writer, 0, expectedResponseBody)
 }
