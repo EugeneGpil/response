@@ -17,6 +17,10 @@ func New(writer http.ResponseWriter) Response {
 	}
 }
 
+func (response Response) GetWriter() http.ResponseWriter {
+	return response.writer
+}
+
 func (response Response) WriteValidationErrors(dto ValidationErrorsDto) error {
 	return WriteValidationErrors.WriteValidationErrors(response.writer, dto)
 }
