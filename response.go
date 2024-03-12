@@ -32,3 +32,7 @@ func (response Response) Write(message []byte) (int, error) {
 func (response Response) SetStatusCode(statusCode int) {
 	response.writer.WriteHeader(statusCode)
 }
+
+func (response Response) WriteBadRequest(error string) {
+	http.Error(response.writer, error, http.StatusBadRequest)
+}
